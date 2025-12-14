@@ -1,0 +1,38 @@
+=== Mini Ordonnanceur Linux ===
+1. FIFO
+2. Round Robin
+3. Priorité préemptive
+4. Multi-Level avec aging
+5. SJF
+6. Priorité non préemptive
+7. SRTF
+
+Vous pouvez entrer plusieurs choix séparés par des espaces (ex: 1 2 5 7)
+Choix : 
+╔════════════════════════════════════════════════╗
+║                 1. FIFO                        ║
+╚════════════════════════════════════════════════╝
+
+
+================ FIFO Scheduler =================
+ID    Process    Arrival  Burst 
+-----------------------------------------------
+1     P1         0        1     
+2     P2         0        1     
+
+Gantt Chart:
+Time :  0  1 
+P1    : [31m█[0m  . 
+P2    :  . [32m█[0m 
+
+Summary:
+Process    Waiting    Turnaround
+P1         0          1         
+P2         1          2         
+================================================
+End of FIFO scheduling.
+
+
+────────────────────────────────────────────────────────────
+
+Tous les algorithmes sélectionnés ont été exécutés.

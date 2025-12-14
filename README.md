@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Operating System Schedulers
 
-## Getting Started
+This project is a *process scheduling simulation system* for operating systems. It allows users to visualize and compare the behavior of different scheduling algorithms using configurable process data.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Description
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The project consists of a *frontend developed with Next.js* and a *backend implemented in C*. The backend is automatically executed when the frontend is launched. The user can:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* Upload a .txt file containing process definitions.
+* Add processes manually.
+* Edit or delete existing processes.
+* Select one or more scheduling algorithms to execute.
+* Visualize the scheduling results directly through the web interface.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+### Process Management
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Upload of a process file in TXT format.
+* Manual addition of processes through the UI.
+* Edit processes loaded from a file or added manually.
+* Delete processes before running the simulation.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Scheduling Algorithms
 
-## Deploy on Vercel
+Users can select one or more of the following scheduling algorithms:
+* Selection of scheduling algorithms, including:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  * *FIFO (First In, First Out)*: processes are executed in the order of their arrival.
+  * *SJF (Shortest Job First)*: the process with the shortest execution time is executed first.
+  * *SRTF (Shortest Remaining Time First)*: the process with the shortest remaining execution time has priority.
+  * *Round Robin*: each process is given a fixed time quantum in a cyclic order until completion.
+  * *Multi-level with Aging*: processes are distributed across multiple priority levels; their priority increases over time to prevent starvation, and processes with the same priority are scheduled using Round Robin.
+  * *Preemptive Priority Scheduling*: the process with the highest priority (lowest numerical value) can interrupt a currently running process.
+  * *Non-preemptive Priority Scheduling*: the process with the highest priority (lowest numerical value) waits until the currently running process finishes before being executed.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> *Priority rule:* the smaller the number, the higher the priority.
+> Example: P1 has priority 5 and P2 has priority 3 → P2 has higher priority.
+
+---
+
+## TXT File Format
+
+The input file must contain the following fields:
+
+* name: process name
+* arrival: arrival time
+* burst: execution time
+* priority: process priority (lower number = higher priority)
+
+---
+
+## Technologies
+
+* *Frontend*: Next.js
+* *Backend*: C
+
+---
+
+## Installation and Execution
+
+### Install Node.js and Next.js
+
+1. Install Node.js (recommended version ≥ 18):
+
+   ```bash
+   sudo apt update
+   sudo apt install nodejs npm
+   
+2. Verify the installation:
+
+   ```bash
+   node -v
+   npm -v
+   
+3. Install frontend dependencies:
+
+   ```bash
+   cd Full_App
+   npm install
+   
+
+---
+
+### Run the Project
+
+1. Start the frontend (the C backend will start automatically):
+
+   ```bash
+   npm run dev
+   
+2. Open your browser and navigate to:
+
+   
+   http://localhost:3000
+   
+
+---
+
+## Usage
+
+1. Upload a file or add processes manually.
+2. Edit or delete processes as needed.
+3. Select the desired scheduling algorithms.
+4. Run the simulation.
+5. View the scheduling results and the corresponding Gantt chart.
+
+---
